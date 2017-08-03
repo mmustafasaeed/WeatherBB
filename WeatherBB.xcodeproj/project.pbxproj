@@ -20,6 +20,7 @@
 		C40951951F335E8E003C1BB5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951941F335E8E003C1BB5 /* Location.swift */; };
 		C40951971F335F1B003C1BB5 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951961F335F1B003C1BB5 /* Weather.swift */; };
 		C40951991F335FC3003C1BB5 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951981F335FC3003C1BB5 /* Forecast.swift */; };
+		C409519B1F3366DA003C1BB5 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C409519A1F3366DA003C1BB5 /* WeatherCell.swift */; };
 		DDBECC7D7C0D273ACEA32538 /* Pods_WeatherBB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8323934DF152C3627E8263 /* Pods_WeatherBB.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		C40951941F335E8E003C1BB5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C40951961F335F1B003C1BB5 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		C40951981F335FC3003C1BB5 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		C409519A1F3366DA003C1BB5 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		D38FE80F6183A131C20DB961 /* Pods_WeatherBBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 		C409514A1F324314003C1BB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C409519A1F3366DA003C1BB5 /* WeatherCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				C40951931F335E44003C1BB5 /* Constants.swift in Sources */,
 				C40951991F335FC3003C1BB5 /* Forecast.swift in Sources */,
 				C40951971F335F1B003C1BB5 /* Weather.swift in Sources */,
+				C409519B1F3366DA003C1BB5 /* WeatherCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

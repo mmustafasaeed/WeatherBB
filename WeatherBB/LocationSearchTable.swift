@@ -14,6 +14,8 @@ class LocationSearchTable: UITableViewController {
     weak var handleMapSearchDelegate: HandleMapSearch?
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
+    var selectedLocationLat = 0.0
+    var selectedLocationLong = 0.0
     
     
     func parseAddress(_ selectedItem:MKPlacemark) -> String {
@@ -92,7 +94,9 @@ extension LocationSearchTable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = matchingItems[indexPath.row].placemark
-        handleMapSearchDelegate?.dropPinZoomIn(selectedItem)
+        selectedLocationLat = (matchingItems[indexPath.row].placemark.location?.coordinate.latitude)!
+        selectedLocationLong = (matchingItems[indexPath.row].placemark.location?.coordinate.longitude)!
+        handleMapSearchDelegate?.dropPinZoomIn(selectedItem,selectedLocationLat,selectedLocationLong)
         dismiss(animated: true, completion: nil)
     }
     

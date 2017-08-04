@@ -10,20 +10,26 @@ import UIKit
 import MapKit
 
 protocol HandleMapSearch: class {
-    func dropPinZoomIn(_ placemark:MKPlacemark)
+    func dropPinZoomIn(_ placemark:MKPlacemark, _ lat:Double, _ lon:Double)
 }
 
 class MapVC: UIViewController {
     
     var selectedPin: MKPlacemark?
     var resultSearchController: UISearchController!
+    var selectedLat = 0.0
+    var selectedLon = 0.0
+    var cityNameForWeather = ""
+    
     
     let locationManager = CLLocationManager()
-
+    let defaults:UserDefaults = UserDefaults.standard
+    
     @IBOutlet weak var mapview: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -48,6 +54,23 @@ class MapVC: UIViewController {
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         mapItem.openInMaps(launchOptions: launchOptions)
     }
+
+    @IBAction func saveCity(_ sender: Any) {
+        
+        var someDict = [String : Double]()
+        someDict["lat"] = selectedLat
+        someDict["lon"] = selectedLon
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let city = City(context: context) // Link Task & Context
+        city.lat = selectedLat
+        city.lon = selectedLon
+        
+        // Save the data to coredata
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        defaults.set(someDict, forKey: cityNameForWeather)
+            }
 }
 
 extension MapVC : CLLocationManagerDelegate {
@@ -73,7 +96,7 @@ extension MapVC : CLLocationManagerDelegate {
 
 extension MapVC: HandleMapSearch {
     
-    func dropPinZoomIn(_ placemark: MKPlacemark){
+    func dropPinZoomIn(_ placemark: MKPlacemark, _ lat:Double, _ lon:Double){
         // cache the pin
         selectedPin = placemark
         // clear existing pins
@@ -85,7 +108,12 @@ extension MapVC: HandleMapSearch {
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
+            cityNameForWeather = city
+            
         }
+        selectedLat = lat
+        selectedLon = lon
+        
         
         mapview.addAnnotation(annotation)
         let span = MKCoordinateSpanMake(0.05, 0.05)

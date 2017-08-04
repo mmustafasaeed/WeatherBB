@@ -23,6 +23,13 @@
 		C409519B1F3366DA003C1BB5 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C409519A1F3366DA003C1BB5 /* WeatherCell.swift */; };
 		C40951AB1F345AE0003C1BB5 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951AA1F345AE0003C1BB5 /* MapVC.swift */; };
 		C40951AD1F345E8F003C1BB5 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951AC1F345E8F003C1BB5 /* LocationSearchTable.swift */; };
+		C40951AF1F34A039003C1BB5 /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951AE1F34A039003C1BB5 /* CardLayout.swift */; };
+		C40951B11F34A0A1003C1BB5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B01F34A0A1003C1BB5 /* HomeVC.swift */; };
+		C40951B31F34A318003C1BB5 /* WeatherCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B21F34A318003C1BB5 /* WeatherCardCell.swift */; };
+		C40951B51F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B41F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift */; };
+		C40951B71F34A743003C1BB5 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B61F34A743003C1BB5 /* UIView+Frame.swift */; };
+		C40951B91F34AB6F003C1BB5 /* CoinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B81F34AB6F003C1BB5 /* CoinLayout.swift */; };
+		C40951DD1F350E45003C1BB5 /* WeatherBB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C40951DB1F350E45003C1BB5 /* WeatherBB.xcdatamodeld */; };
 		DDBECC7D7C0D273ACEA32538 /* Pods_WeatherBB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8323934DF152C3627E8263 /* Pods_WeatherBB.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +79,13 @@
 		C409519A1F3366DA003C1BB5 /* WeatherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		C40951AA1F345AE0003C1BB5 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		C40951AC1F345E8F003C1BB5 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		C40951AE1F34A039003C1BB5 /* CardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
+		C40951B01F34A0A1003C1BB5 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		C40951B21F34A318003C1BB5 /* WeatherCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCardCell.swift; sourceTree = "<group>"; };
+		C40951B41F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumberFormatter+WeatherBB.swift"; sourceTree = "<group>"; };
+		C40951B61F34A743003C1BB5 /* UIView+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		C40951B81F34AB6F003C1BB5 /* CoinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinLayout.swift; sourceTree = "<group>"; };
+		C40951DC1F350E45003C1BB5 /* WeatherBB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherBB.xcdatamodel; sourceTree = "<group>"; };
 		D38FE80F6183A131C20DB961 /* Pods_WeatherBBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -160,6 +174,7 @@
 				C40951231F323F43003C1BB5 /* Assets.xcassets */,
 				C40951251F323F43003C1BB5 /* LaunchScreen.storyboard */,
 				C40951281F323F43003C1BB5 /* Info.plist */,
+				C40951DB1F350E45003C1BB5 /* WeatherBB.xcdatamodeld */,
 			);
 			path = WeatherBB;
 			sourceTree = "<group>";
@@ -186,6 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				C409519A1F3366DA003C1BB5 /* WeatherCell.swift */,
+				C40951AE1F34A039003C1BB5 /* CardLayout.swift */,
+				C40951B21F34A318003C1BB5 /* WeatherCardCell.swift */,
+				C40951B81F34AB6F003C1BB5 /* CoinLayout.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -196,6 +214,7 @@
 				C409518A1F331B1E003C1BB5 /* testDataViewController.swift */,
 				C40951AA1F345AE0003C1BB5 /* MapVC.swift */,
 				C40951AC1F345E8F003C1BB5 /* LocationSearchTable.swift */,
+				C40951B01F34A0A1003C1BB5 /* HomeVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				C40951921F335E44003C1BB5 /* Constants.swift */,
+				C40951B41F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift */,
+				C40951B61F34A743003C1BB5 /* UIView+Frame.swift */,
 			);
 			name = "Managers And Constants";
 			sourceTree = "<group>";
@@ -504,12 +525,19 @@
 			files = (
 				C409518B1F331B1E003C1BB5 /* testDataViewController.swift in Sources */,
 				C40951AD1F345E8F003C1BB5 /* LocationSearchTable.swift in Sources */,
+				C40951DD1F350E45003C1BB5 /* WeatherBB.xcdatamodeld in Sources */,
 				C409511D1F323F43003C1BB5 /* AppDelegate.swift in Sources */,
 				C40951951F335E8E003C1BB5 /* Location.swift in Sources */,
+				C40951B71F34A743003C1BB5 /* UIView+Frame.swift in Sources */,
+				C40951B51F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift in Sources */,
 				C40951931F335E44003C1BB5 /* Constants.swift in Sources */,
 				C40951991F335FC3003C1BB5 /* Forecast.swift in Sources */,
 				C40951AB1F345AE0003C1BB5 /* MapVC.swift in Sources */,
 				C40951971F335F1B003C1BB5 /* Weather.swift in Sources */,
+				C40951AF1F34A039003C1BB5 /* CardLayout.swift in Sources */,
+				C40951B11F34A0A1003C1BB5 /* HomeVC.swift in Sources */,
+				C40951B91F34AB6F003C1BB5 /* CoinLayout.swift in Sources */,
+				C40951B31F34A318003C1BB5 /* WeatherCardCell.swift in Sources */,
 				C409519B1F3366DA003C1BB5 /* WeatherCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,6 +818,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C40951DB1F350E45003C1BB5 /* WeatherBB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C40951DC1F350E45003C1BB5 /* WeatherBB.xcdatamodel */,
+			);
+			currentVersion = C40951DC1F350E45003C1BB5 /* WeatherBB.xcdatamodel */;
+			path = WeatherBB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C40951111F323F43003C1BB5 /* Project object */;
 }

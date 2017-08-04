@@ -27,6 +27,12 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
     var forecast: Forecast!
     var forecasts = [Forecast]()
 
+    @IBAction func addLocation(_ sender: Any) {
+        
+        let content = storyboard!.instantiateViewController(withIdentifier: "map") as! MapVC
+        //content.type = contentType
+        self.navigationController?.pushViewController(content, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,40 +48,40 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
         
         currentWeather = Weather()
         // Do any additional setup after loading the view.
-        let config = URLSessionConfiguration.default // Session Configuration
-        let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid=c6e381d8c7ff98f0fee43775817cf6ad&units=metric")!
-        
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
-            
-            if error != nil {
-                
-                print(error!.localizedDescription)
-                
-            } else {
-                
-                do {
-                    
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-                    {
-                        
-                        //Implement your logic
-                        print(json)
-                        
-                    }
-                    
-                } catch {
-                    
-                    print("error in JSONSerialization")
-                    
-                }
-                
-                
-            }
-            
-        })
-        task.resume()
+//        let config = URLSessionConfiguration.default // Session Configuration
+//        let session = URLSession(configuration: config) // Load configuration into Session
+//        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid=c6e381d8c7ff98f0fee43775817cf6ad&units=metric")!
+//        
+//        let task = session.dataTask(with: url, completionHandler: {
+//            (data, response, error) in
+//            
+//            if error != nil {
+//                
+//                print(error!.localizedDescription)
+//                
+//            } else {
+//                
+//                do {
+//                    
+//                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
+//                    {
+//                        
+//                        //Implement your logic
+//                        print(json)
+//                        
+//                    }
+//                    
+//                } catch {
+//                    
+//                    print("error in JSONSerialization")
+//                    
+//                }
+//                
+//                
+//            }
+//            
+//        })
+//        task.resume()
     }
 
     override func viewDidAppear(_ animated: Bool) {

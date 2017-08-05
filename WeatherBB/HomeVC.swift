@@ -16,10 +16,25 @@ class HomeVC: UIViewController, UICollectionViewDelegateFlowLayout {
     fileprivate var cellWidth = CGFloat(0)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var city: [City] = []
+    var WeatherLocationsArray: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        for obj in city {
+//            
+//            let weatherObj = Weather()
+//            weatherObj._latitude = obj.lat
+//            weatherObj._longitude = obj.lon
+//            weatherObj.downloadWeatherDetails {
+//                //self.downloadForecastData {
+//                    //self.updateMainUI()
+//                self.collectionView.reloadData()
+//                self.WeatherLocationsArray.add(weatherObj)
+//                }
+//            
+//            
+//            
+//        }
         
         // Do any additional setup after loading the view.
         collectionView.delegate = self
@@ -33,11 +48,29 @@ class HomeVC: UIViewController, UICollectionViewDelegateFlowLayout {
         super.viewWillAppear(animated)
         
         getData()
+//        self.collectionView.reloadData()
     }
     
     func getData() {
+        
+        WeatherLocationsArray.removeAllObjects()
         do {
             city = try context.fetch(City.fetchRequest())
+            for obj in city {
+                
+                let weatherObj = Weather()
+                weatherObj._latitude = obj.lat
+                weatherObj._longitude = obj.lon
+                weatherObj.downloadWeatherDetails {
+                    
+                    //self.downloadForecastData {
+                    //self.updateMainUI()
+                    self.collectionView.reloadData()
+                    self.WeatherLocationsArray.add(weatherObj)
+                }      
+                        }
+
+
         } catch {
             print("Fetching Failed")
         }
@@ -67,27 +100,29 @@ extension  HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return city.count
+        return WeatherLocationsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        // let invite = fetchedResultsController!.fetchedObjects![indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCardCell.identifier, for: indexPath) as! WeatherCardCell
-       // cell.invite = invite
+        let weatherobject: Weather = WeatherLocationsArray.object(at: indexPath.row) as! Weather
+        print(weatherobject)
+        cell.cityName.text = weatherobject.cityName
+        cell.temperature.text = "\(weatherobject.currentTemp) °C"
+        cell.date.text = weatherobject.date
+        cell.weatherDescription.text = "\(weatherobject.weatherType)"
+        cell.weatherImage.image = UIImage(named: weatherobject.weatherType)
+       cell.minTemp.text = "\(weatherobject.minTemp) °C / \(weatherobject.maxTemp) °C"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let invite = fetchedResultsController!.fetchedObjects![indexPath.row]
-//        let vc: InboxInviteDetailsViewController! = UIStoryboard.inbox().instantiateViewController()
-//        _ = vc.view
-//        vc.dataController = dataController
-//        vc.invite = invite
-//        
-//        navigationController?.show(vc, sender: nil)
-        
+         let weatherobject: Weather = WeatherLocationsArray.object(at: indexPath.row) as! Weather
         let content = storyboard!.instantiateViewController(withIdentifier: "cityWeatherFull") as! testDataViewController
-        //content.type = contentType
+        content.latitude = weatherobject.latitudeLocation
+        content.longitude = weatherobject.longitudeLocation
+        
         self.navigationController?.pushViewController(content, animated: true)
     }
     
@@ -106,7 +141,7 @@ extension  HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let widthOfCollectionView = collectionView.layer.frame.size.width
         let heightOfCollectionView = collectionView.layer.frame.size.height
         let widthOfCell = widthOfCollectionView * 0.65
-        let heightOfCell = heightOfCollectionView * 0.88
+        let heightOfCell = heightOfCollectionView * 0.65
         
         cellWidth = widthOfCell
         

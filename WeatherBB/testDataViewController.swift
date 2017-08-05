@@ -20,6 +20,9 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var WeatherTypeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var latitude : Double = 0.0
+    var longitude: Double = 0.0
+    
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation!
     
@@ -86,7 +89,16 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        locationAuthStatus()
+        //locationAuthStatus()
+        getData()
+    }
+    
+    func getData(){
+        currentWeather.downloadWeatherDetails {
+            self.downloadForecastData {
+                self.updateMainUI()
+            }
+        }
     }
     
     func locationAuthStatus() {
@@ -107,7 +119,9 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
     
     func downloadForecastData(completed: @escaping DownloadComplete) {
         //Downloading forecast weather data for TableView
-        Alamofire.request(FORECAST_URL).responseJSON { response in
+        
+        let url = "\(BASE_URL)\(LATITUDE)\(latitude)\(LONGITUDE)\(longitude)&cnt=10&mode=json\(APP_ID)\(API_KEY)"
+        Alamofire.request(url).responseJSON { response in
             let result = response.result
             
             if let dict = result.value as? Dictionary<String, AnyObject> {

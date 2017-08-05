@@ -18,6 +18,7 @@ class WeatherCardCell: UICollectionViewCell {
     @IBOutlet weak var maxtemp: UILabel!
     @IBOutlet weak var minTemp: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var weatherImage: UIImageView!
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -27,7 +28,7 @@ class WeatherCardCell: UICollectionViewCell {
         // Add shadow
         contentView.layer.shadowColor = UIColor.black.withAlphaComponent(0.8).cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        contentView.layer.shadowOpacity = 1
+        contentView.layer.shadowOpacity = 0.1
         contentView.layer.shadowRadius = 1
         contentView.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 6).cgPath
     }

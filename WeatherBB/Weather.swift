@@ -15,6 +15,10 @@ class Weather {
     var _date: String!
     var _weatherType: String!
     var _currentTemp: Double!
+    var _latitude : Double!
+    var _longitude : Double!
+    var _minTemp : Double!
+    var _maxTemp: Double!
     
     var cityName: String {
         if _cityName == nil {
@@ -50,9 +54,44 @@ class Weather {
         return _currentTemp
     }
     
+    var latitudeLocation: Double {
+        if _latitude == nil {
+            _latitude = 0.0
+        
+        }
+        return _latitude
+    }
+    
+    var longitudeLocation: Double {
+        if _longitude == nil {
+            _longitude = 0.0
+            
+        }
+        return _longitude
+    }
+    
+    var minTemp : Double {
+        if _minTemp == nil {
+            _minTemp = 0.0
+            
+        }
+        return _minTemp
+    }
+    
+    var maxTemp : Double {
+        if _maxTemp == nil {
+            _maxTemp = 0.0
+            
+        }
+        return _maxTemp
+    }
+
+    
+    
     func downloadWeatherDetails(completed: @escaping DownloadComplete) {
         //Download Current Weather Data
-        Alamofire.request(CURRENT_WEATHER_URL).responseJSON { response in
+        let url = "\(BASE_URL)\(LATITUDE)\(latitudeLocation)\(LONGITUDE)\(longitudeLocation)\(APP_ID)\(API_KEY)"
+        Alamofire.request(url).responseJSON { response in
             let result = response.result
             
             if let dict = result.value as? Dictionary<String, AnyObject> {
@@ -79,8 +118,25 @@ class Weather {
                         
                         let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
                         
-                        self._currentTemp = kelvinToFarenheit
+                        let celsiusTemp = Double(round(currentTemperature - 273.15))
+                        
+                        self._currentTemp = celsiusTemp
+                        
                         print(self._currentTemp)
+                    }
+                    
+                    if let currentMin = main["temp_min"] as? Double {
+                    
+                        let celsiusTempMin = Double(round(currentMin - 273.15))
+                        
+                        self._minTemp = celsiusTempMin
+                    }
+                    
+                    if let currentMax = main["temp_max"] as? Double {
+                      
+                        let celsiusTempMax = Double(round(currentMax - 273.15))
+                        
+                        self._maxTemp = celsiusTempMax
                     }
                 }
             }

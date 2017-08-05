@@ -69,7 +69,7 @@ class MapVC: UIViewController {
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
-        defaults.set(someDict, forKey: cityNameForWeather)
+        self.navigationController?.popViewController(animated: true)
             }
 }
 

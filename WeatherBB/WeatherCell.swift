@@ -17,7 +17,7 @@ class WeatherCell: UITableViewCell {
     @IBOutlet weak var weatherMaxTemp: UILabel!
     
     func configureCell(forecast: Forecast) {
-        weatherMaxTemp.text = "\(forecast.lowTemp)"
+        weatherMaxTemp.text = "\(forecast.lowTemp) "
         weatherMinTemp.text = "\(forecast.highTemp)"
         weatherMainType.text = forecast.weatherType
         weatherImage.image = UIImage(named: forecast.weatherType)

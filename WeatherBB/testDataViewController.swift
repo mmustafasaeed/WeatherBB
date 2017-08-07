@@ -50,6 +50,8 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         
         currentWeather = Weather()
+        currentWeather._latitude = latitude
+        currentWeather._longitude = longitude
         // Do any additional setup after loading the view.
 //        let config = URLSessionConfiguration.default // Session Configuration
 //        let session = URLSession(configuration: config) // Load configuration into Session
@@ -120,7 +122,7 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
     func downloadForecastData(completed: @escaping DownloadComplete) {
         //Downloading forecast weather data for TableView
         
-        let url = "\(BASE_URL)\(LATITUDE)\(latitude)\(LONGITUDE)\(longitude)&cnt=10&mode=json\(APP_ID)\(API_KEY)"
+        let url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(latitude)&lon=\(longitude)&cnt=10&mode=json&appid=c6e381d8c7ff98f0fee43775817cf6ad"
         Alamofire.request(url).responseJSON { response in
             let result = response.result
             

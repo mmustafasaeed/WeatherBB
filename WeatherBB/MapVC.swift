@@ -23,16 +23,21 @@ class MapVC: UIViewController {
     
     
     let locationManager = CLLocationManager()
-    let defaults:UserDefaults = UserDefaults.standard
+    var currentLocation: CLLocation!
+    
+    var dragPin: MKPointAnnotation!
+    var startLocation = CGPoint.zero
+
+//    let defaults:UserDefaults = UserDefaults.standard
     
     @IBOutlet weak var mapview: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
         locationManager.requestLocation()
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -46,13 +51,28 @@ class MapVC: UIViewController {
         definesPresentationContext = true
         locationSearchTable.mapView = mapview
         locationSearchTable.handleMapSearchDelegate = self
+        locationAuthStatus()
     }
-
-    func getDirections(){
-        guard let selectedPin = selectedPin else { return }
-        let mapItem = MKMapItem(placemark: selectedPin)
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        mapItem.openInMaps(launchOptions: launchOptions)
+    
+    func locationAuthStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            selectedLat = currentLocation.coordinate.latitude
+            selectedLon = currentLocation.coordinate.longitude
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = currentLocation.coordinate
+            //annotation.title = currentLocation.
+            
+            mapview.addAnnotation(annotation)
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegionMake(currentLocation.coordinate, span)
+            mapview.setRegion(region, animated: true)
+            
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
+        }
     }
 
     @IBAction func saveCity(_ sender: Any) {
@@ -123,8 +143,34 @@ extension MapVC: HandleMapSearch {
     
 }
 
+
 extension MapVC : MKMapViewDelegate {
     
+    func handleDrag(gesture: UILongPressGestureRecognizer) {
+        let location = gesture.location(in: mapview)
+        
+        if gesture.state == .began {
+            startLocation = location
+        } else if gesture.state == .changed {
+            gesture.view?.transform = CGAffineTransform(translationX: location.x - startLocation.x, y: location.y - startLocation.y)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            let annotationView = gesture.view as! MKAnnotationView
+            let annotation = annotationView.annotation
+            
+            
+            
+            
+            let translate = CGPoint(x: location.x - startLocation.x, y: location.y - startLocation.y)
+            let originalLocation = mapview.convert((annotation?.coordinate)!, toPointTo: mapview)
+            let updatedLocation = CGPoint(x: originalLocation.x + translate.x, y: originalLocation.y + translate.y)
+            
+            let coordinateChanged :CLLocationCoordinate2D = mapview.convert(updatedLocation, toCoordinateFrom: mapview)
+            selectedLat = coordinateChanged.latitude
+            selectedLon = coordinateChanged.longitude
+            
+        }
+    }
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         
         guard !(annotation is MKUserLocation) else { return nil }
@@ -133,14 +179,18 @@ extension MapVC : MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         }
+        let drag = UILongPressGestureRecognizer(target: self, action: #selector(MapVC.handleDrag(gesture:)))
+        drag.minimumPressDuration = 0 // set this to whatever you want
+        drag.allowableMovement = .greatestFiniteMagnitude
+        pinView?.addGestureRecognizer(drag)
+        
         pinView?.pinTintColor = UIColor.orange
+        pinView?.isDraggable = true
         pinView?.canShowCallout = true
-        let smallSquare = CGSize(width: 30, height: 30)
-        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
-        button.setBackgroundImage(UIImage(named: "car"), for: UIControlState())
-        button.addTarget(self, action: #selector(MapVC.getDirections), for: .touchUpInside)
-        pinView?.leftCalloutAccessoryView = button
+        pinView?.animatesDrop = true
+
         
         return pinView
     }
+    
 }

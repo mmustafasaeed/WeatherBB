@@ -30,6 +30,7 @@
 		C40951B71F34A743003C1BB5 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B61F34A743003C1BB5 /* UIView+Frame.swift */; };
 		C40951B91F34AB6F003C1BB5 /* CoinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951B81F34AB6F003C1BB5 /* CoinLayout.swift */; };
 		C40951DD1F350E45003C1BB5 /* WeatherBB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C40951DB1F350E45003C1BB5 /* WeatherBB.xcdatamodeld */; };
+		C40951DF1F387DAC003C1BB5 /* DragAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951DE1F387DAC003C1BB5 /* DragAnnotation.swift */; };
 		DDBECC7D7C0D273ACEA32538 /* Pods_WeatherBB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8323934DF152C3627E8263 /* Pods_WeatherBB.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		C40951B61F34A743003C1BB5 /* UIView+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		C40951B81F34AB6F003C1BB5 /* CoinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinLayout.swift; sourceTree = "<group>"; };
 		C40951DC1F350E45003C1BB5 /* WeatherBB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherBB.xcdatamodel; sourceTree = "<group>"; };
+		C40951DE1F387DAC003C1BB5 /* DragAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragAnnotation.swift; sourceTree = "<group>"; };
 		D38FE80F6183A131C20DB961 /* Pods_WeatherBBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -235,6 +237,7 @@
 				C40951921F335E44003C1BB5 /* Constants.swift */,
 				C40951B41F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift */,
 				C40951B61F34A743003C1BB5 /* UIView+Frame.swift */,
+				C40951DE1F387DAC003C1BB5 /* DragAnnotation.swift */,
 			);
 			name = "Managers And Constants";
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				C40951991F335FC3003C1BB5 /* Forecast.swift in Sources */,
 				C40951AB1F345AE0003C1BB5 /* MapVC.swift in Sources */,
 				C40951971F335F1B003C1BB5 /* Weather.swift in Sources */,
+				C40951DF1F387DAC003C1BB5 /* DragAnnotation.swift in Sources */,
 				C40951AF1F34A039003C1BB5 /* CardLayout.swift in Sources */,
 				C40951B11F34A0A1003C1BB5 /* HomeVC.swift in Sources */,
 				C40951B91F34AB6F003C1BB5 /* CoinLayout.swift in Sources */,

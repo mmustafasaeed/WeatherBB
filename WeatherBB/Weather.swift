@@ -19,6 +19,8 @@ class Weather {
     var _longitude : Double!
     var _minTemp : Double!
     var _maxTemp: Double!
+    var _humidity: Double!
+    var _windSpeed :Double!
     
     var cityName: String {
         if _cityName == nil {
@@ -85,6 +87,26 @@ class Weather {
         }
         return _maxTemp
     }
+    
+    var humidity: Double {
+        
+        if _humidity == nil {
+            _humidity = 0.0
+            
+        }
+        return _humidity
+        
+    }
+    
+    var windSpeed: Double {
+        
+        if _windSpeed == nil {
+            _windSpeed = 0.0
+            
+        }
+        return _windSpeed
+        
+    }
 
     
     
@@ -137,6 +159,23 @@ class Weather {
                         let celsiusTempMax = Double(round(currentMax - 273.15))
                         
                         self._maxTemp = celsiusTempMax
+                    }
+                    
+                    if let humidityPercentage = main["humidity"] as? Double {
+                        
+                        let humidityValue = humidityPercentage
+                        self._humidity = humidityValue
+                    }
+                    
+                    
+                }
+                
+                if let wind = dict["wind"] as? Dictionary<String, AnyObject> {
+                    
+                    if let windSpeedValue = wind["speed"] as? Double {
+                        
+                        let speed = windSpeedValue
+                        self._windSpeed = speed
                     }
                 }
             }

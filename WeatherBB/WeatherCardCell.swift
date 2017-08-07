@@ -19,6 +19,8 @@ class WeatherCardCell: UICollectionViewCell {
     @IBOutlet weak var minTemp: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var humidity: UILabel!
+    @IBOutlet weak var rainChances: UILabel!
     override func layoutSubviews() {
         super.layoutSubviews()
         

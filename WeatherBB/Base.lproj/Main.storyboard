@@ -512,10 +512,10 @@
             </objects>
             <point key="canvasLocation" x="2604.375" y="45.422535211267608"/>
         </scene>
-        <!--View Controller-->
+        <!--InfoVC View Controller-->
         <scene sceneID="PAp-kG-eGX">
             <objects>
-                <viewController id="rfX-N2-cZE" sceneMemberID="viewController">
+                <viewController id="rfX-N2-cZE" customClass="InfoVCViewController" customModule="WeatherBB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O5k-cR-DNJ"/>
                         <viewControllerLayoutGuide type="bottom" id="xT2-HV-fGD"/>
@@ -538,8 +538,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JBR-jU-G3g">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="LHc-GQ-CCd"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="LHc-GQ-CCd">
+                            <connections>
+                                <action selector="backButtomPressed:" destination="rfX-N2-cZE" id="SU2-bH-LOE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="backpressed" destination="JBR-jU-G3g" id="2UF-CD-8g6"/>
+                        <outlet property="webview" destination="52B-Fb-E6L" id="sXH-rD-PGY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3SE-vu-zxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

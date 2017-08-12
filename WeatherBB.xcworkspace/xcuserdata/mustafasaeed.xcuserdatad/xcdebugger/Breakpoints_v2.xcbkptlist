@@ -42,109 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherBB/testDataViewController.swift"
-            timestampString = "523801214.219322"
+            timestampString = "524224326.208597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "downloadForecastData(completed:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherBB.testDataViewController.downloadForecastData (completed : () -&gt; ()) -&gt; ()"
-                  moduleName = "WeatherBB"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mustafasaeed/Documents/WeatherBB/WeatherBB/testDataViewController.swift"
-                  timestampString = "523805553.630425"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "348">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherBB.testDataViewController.(downloadForecastData (completed : () -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "WeatherBB"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mustafasaeed/Documents/WeatherBB/WeatherBB/testDataViewController.swift"
-                  timestampString = "523805553.632032"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "127"
-                  endingLineNumber = "127"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherBB/testDataViewController.swift"
-            timestampString = "523801214.219322"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "updateMainUI()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherBB/Weather.swift"
-            timestampString = "523807649.742958"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "downloadWeatherDetails(completed:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherBB.Weather.downloadWeatherDetails (completed : () -&gt; ()) -&gt; ()"
-                  moduleName = "WeatherBB"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mustafasaeed/Documents/WeatherBB/WeatherBB/Weather.swift"
-                  timestampString = "523805553.639138"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "824">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherBB.Weather.(downloadWeatherDetails (completed : () -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "WeatherBB"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mustafasaeed/Documents/WeatherBB/WeatherBB/Weather.swift"
-                  timestampString = "523805553.640623"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

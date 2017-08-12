@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-import Alamofire
+
 
 class testDataViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
@@ -29,6 +29,7 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
     var currentWeather: Weather!
     var forecast: Forecast!
     var forecasts = [Forecast]()
+    let downloader = JSONDownloader()
 
     @IBAction func addLocation(_ sender: Any) {
         
@@ -52,41 +53,6 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
         currentWeather = Weather()
         currentWeather._latitude = latitude
         currentWeather._longitude = longitude
-        // Do any additional setup after loading the view.
-//        let config = URLSessionConfiguration.default // Session Configuration
-//        let session = URLSession(configuration: config) // Load configuration into Session
-//        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid=c6e381d8c7ff98f0fee43775817cf6ad&units=metric")!
-//        
-//        let task = session.dataTask(with: url, completionHandler: {
-//            (data, response, error) in
-//            
-//            if error != nil {
-//                
-//                print(error!.localizedDescription)
-//                
-//            } else {
-//                
-//                do {
-//                    
-//                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-//                    {
-//                        
-//                        //Implement your logic
-//                        print(json)
-//                        
-//                    }
-//                    
-//                } catch {
-//                    
-//                    print("error in JSONSerialization")
-//                    
-//                }
-//                
-//                
-//            }
-//            
-//        })
-//        task.resume()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -123,24 +89,41 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
         //Downloading forecast weather data for TableView
         
         let url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(latitude)&lon=\(longitude)&cnt=10&mode=json&appid=c6e381d8c7ff98f0fee43775817cf6ad"
-        Alamofire.request(url).responseJSON { response in
-            let result = response.result
+        
+        let request = URLRequest(url: URL(string: url)!)
+        
+        let task = downloader.jsonTask(with: request) { json, error in
             
-            if let dict = result.value as? Dictionary<String, AnyObject> {
-                
-                if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
-                    
-                    for obj in list {
-                        let forecast = Forecast(weatherDict: obj)
-                        self.forecasts.append(forecast)
-                        print(obj)
-                    }
-                    self.forecasts.remove(at: 0)
-                    self.tableView.reloadData()
+            //running asynchronous stuff on the main thread, use this method!
+            //if you're on a background queue and you want to make changes to the UI call this method.
+            DispatchQueue.main.async {
+                guard let json = json else {
+                    completed()
+                    return
                 }
+                
+                //print(json["daily"] as? [String: AnyObject]!)
+                let result = json
+                if let dict = result as? Dictionary<String, AnyObject> {
+                    
+                    if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
+                        
+                        for obj in list {
+                            let forecast = Forecast(weatherDict: obj)
+                            self.forecasts.append(forecast)
+                            print(obj)
+                        }
+                        self.forecasts.remove(at: 0)
+                        self.tableView.reloadData()
+                    }
+                }
+                completed()
+
             }
-            completed()
         }
+        
+        task.resume()
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

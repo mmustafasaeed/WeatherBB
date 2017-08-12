@@ -32,6 +32,9 @@
 		C40951DD1F350E45003C1BB5 /* WeatherBB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C40951DB1F350E45003C1BB5 /* WeatherBB.xcdatamodeld */; };
 		C40951DF1F387DAC003C1BB5 /* DragAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951DE1F387DAC003C1BB5 /* DragAnnotation.swift */; };
 		C40951E11F38AF48003C1BB5 /* InfoVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951E01F38AF47003C1BB5 /* InfoVCViewController.swift */; };
+		C40951E41F3F0019003C1BB5 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951E31F3F0019003C1BB5 /* CircularTransition.swift */; };
+		C40951E61F3F00A2003C1BB5 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951E51F3F00A2003C1BB5 /* JSONDownloader.swift */; };
+		C40951E81F3F00E4003C1BB5 /* WeatherApiErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40951E71F3F00E4003C1BB5 /* WeatherApiErrors.swift */; };
 		DDBECC7D7C0D273ACEA32538 /* Pods_WeatherBB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8323934DF152C3627E8263 /* Pods_WeatherBB.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +93,9 @@
 		C40951DC1F350E45003C1BB5 /* WeatherBB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherBB.xcdatamodel; sourceTree = "<group>"; };
 		C40951DE1F387DAC003C1BB5 /* DragAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragAnnotation.swift; sourceTree = "<group>"; };
 		C40951E01F38AF47003C1BB5 /* InfoVCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVCViewController.swift; sourceTree = "<group>"; };
+		C40951E31F3F0019003C1BB5 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		C40951E51F3F00A2003C1BB5 /* JSONDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
+		C40951E71F3F00E4003C1BB5 /* WeatherApiErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherApiErrors.swift; sourceTree = "<group>"; };
 		D38FE80F6183A131C20DB961 /* Pods_WeatherBBUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBBUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -169,6 +175,7 @@
 		C409511B1F323F43003C1BB5 /* WeatherBB */ = {
 			isa = PBXGroup;
 			children = (
+				C40951E21F3EFFE8003C1BB5 /* Utilities */,
 				C409514D1F324351003C1BB5 /* Managers And Constants */,
 				C409514C1F324334003C1BB5 /* Models */,
 				C409514B1F32431F003C1BB5 /* Controllers */,
@@ -243,6 +250,16 @@
 				C40951DE1F387DAC003C1BB5 /* DragAnnotation.swift */,
 			);
 			name = "Managers And Constants";
+			sourceTree = "<group>";
+		};
+		C40951E21F3EFFE8003C1BB5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C40951E31F3F0019003C1BB5 /* CircularTransition.swift */,
+				C40951E51F3F00A2003C1BB5 /* JSONDownloader.swift */,
+				C40951E71F3F00E4003C1BB5 /* WeatherApiErrors.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,9 +554,12 @@
 				C40951B71F34A743003C1BB5 /* UIView+Frame.swift in Sources */,
 				C40951B51F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift in Sources */,
 				C40951931F335E44003C1BB5 /* Constants.swift in Sources */,
+				C40951E41F3F0019003C1BB5 /* CircularTransition.swift in Sources */,
+				C40951E81F3F00E4003C1BB5 /* WeatherApiErrors.swift in Sources */,
 				C40951991F335FC3003C1BB5 /* Forecast.swift in Sources */,
 				C40951AB1F345AE0003C1BB5 /* MapVC.swift in Sources */,
 				C40951971F335F1B003C1BB5 /* Weather.swift in Sources */,
+				C40951E61F3F00A2003C1BB5 /* JSONDownloader.swift in Sources */,
 				C40951DF1F387DAC003C1BB5 /* DragAnnotation.swift in Sources */,
 				C40951AF1F34A039003C1BB5 /* CardLayout.swift in Sources */,
 				C40951E11F38AF48003C1BB5 /* InfoVCViewController.swift in Sources */,

@@ -27,7 +27,6 @@ class JSONDownloader {
             // what to do with the data, response and error:
             
             // Convert to HTTP Response
-            // We try to get an HTTP Response, if that doesnt work, we cann the body of the closure above ^^ then execute it adn then exist from *this* closure.
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(nil, .requestFailed)
                 return

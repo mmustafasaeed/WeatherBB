@@ -171,12 +171,34 @@ extension  HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCardCell.identifier, for: indexPath) as! WeatherCardCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCardCell.identifier, for: indexPath) as! WeatherCardCell
         let weatherobject: Weather = WeatherLocationsArray.object(at: indexPath.row) as! Weather
         
         if isEditEnabled == true {
             
+            let arrayIndexpath = [indexPath]
+            do {
+                city = try context.fetch(City.fetchRequest())
+                
+                var i = 0
+                for obj in city {
+                   
+                    i += 1
+                    
+                    if i == indexPath.row {
+                     context.delete(obj)
+                    }
+                    
+                }
+                
+                
+            } catch {
+                print("Fetching Failed")
+            }
+            WeatherLocationsArray.removeObject(at: indexPath.row)
+            collectionView.deleteItems(at: arrayIndexpath)
             
+           // collectionView.reloadData()
         
         } else {
             let content = storyboard!.instantiateViewController(withIdentifier: "cityWeatherFull") as! testDataViewController

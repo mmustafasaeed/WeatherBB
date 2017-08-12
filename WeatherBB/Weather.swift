@@ -127,71 +127,71 @@ class Weather {
                     return
                 }
                 
-                            let result = json
+                let result = json
                 
-                            if let dict = result as? Dictionary<String, AnyObject> {
+                if let dict = result as? Dictionary<String, AnyObject> {
                 
-                                if let name = dict["name"] as? String {
-                                    self._cityName = name.capitalized
-                                    print(self._cityName)
+                        if let name = dict["name"] as? String {
+                            self._cityName = name.capitalized
+                            print(self._cityName)
+                        }
+                
+                        if let weather = dict["weather"] as? [Dictionary<String, AnyObject>] {
+                
+                        if let main = weather[0]["main"] as? String {
+                            self._weatherType = main.capitalized
+                            print(self._weatherType)
+                        }
+                
+                        }
+                
+                        if let main = dict["main"] as? Dictionary<String, AnyObject> {
+                
+                        if let currentTemperature = main["temp"] as? Double {
+                
+                            let kelvinToFarenheitPreDivision = (currentTemperature * (9/5) - 459.67)
+                
+                            let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
+                
+                            let celsiusTemp = Double(round(currentTemperature - 273.15))
+                
+                            self._currentTemp = celsiusTemp
+                
+                                print(self._currentTemp)
+                            }
+                
+                            if let currentMin = main["temp_min"] as? Double {
+                
+                                let celsiusTempMin = Double(round(currentMin - 273.15))
+                
+                                    self._minTemp = celsiusTempMin
                                 }
                 
-                                if let weather = dict["weather"] as? [Dictionary<String, AnyObject>] {
+                                if let currentMax = main["temp_max"] as? Double {
                 
-                                    if let main = weather[0]["main"] as? String {
-                                        self._weatherType = main.capitalized
-                                        print(self._weatherType)
-                                    }
+                                    let celsiusTempMax = Double(round(currentMax - 273.15))
                 
+                                    self._maxTemp = celsiusTempMax
                                 }
                 
-                                if let main = dict["main"] as? Dictionary<String, AnyObject> {
-                
-                                    if let currentTemperature = main["temp"] as? Double {
-                
-                                        let kelvinToFarenheitPreDivision = (currentTemperature * (9/5) - 459.67)
-                
-                                        let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
-                
-                                        let celsiusTemp = Double(round(currentTemperature - 273.15))
-                
-                                        self._currentTemp = celsiusTemp
-                
-                                        print(self._currentTemp)
-                                    }
-                
-                                    if let currentMin = main["temp_min"] as? Double {
-                
-                                        let celsiusTempMin = Double(round(currentMin - 273.15))
-                
-                                        self._minTemp = celsiusTempMin
-                                    }
-                
-                                    if let currentMax = main["temp_max"] as? Double {
-                
-                                        let celsiusTempMax = Double(round(currentMax - 273.15))
-                
-                                        self._maxTemp = celsiusTempMax
-                                    }
-                
-                                    if let humidityPercentage = main["humidity"] as? Double {
+                                if let humidityPercentage = main["humidity"] as? Double {
                                         
-                                        let humidityValue = humidityPercentage
-                                        self._humidity = humidityValue
-                                    }
+                                    let humidityValue = humidityPercentage
+                                    self._humidity = humidityValue
+                                }
                                     
                                     
                                 }
                                 
-                                if let wind = dict["wind"] as? Dictionary<String, AnyObject> {
+                            if let wind = dict["wind"] as? Dictionary<String, AnyObject> {
                                     
-                                    if let windSpeedValue = wind["speed"] as? Double {
+                                if let windSpeedValue = wind["speed"] as? Double {
                                         
-                                        let speed = windSpeedValue
-                                        self._windSpeed = speed
-                                    }
+                                    let speed = windSpeedValue
+                                    self._windSpeed = speed
                                 }
                             }
+                        }
                 print(json)
                 
                 

@@ -111,7 +111,7 @@ class Weather {
 
     
     
-    func downloadWeatherDetails(completed: @escaping DownloadComplete) {
+    func downloadWeatherDetails(completed: @escaping DownloadWeatherComplete) {
         //Download Current Weather Data
         let url = "\(BASE_URL)\(LATITUDE)\(latitudeLocation)\(LONGITUDE)\(longitudeLocation)\(APP_ID)\(API_KEY)"
         
@@ -123,7 +123,7 @@ class Weather {
             //if you're on a background queue and you want to make changes to the UI call this method.
             DispatchQueue.main.async {
                 guard let json = json else {
-                    completed()
+                    completed(error)
                     return
                 }
                 
@@ -195,7 +195,7 @@ class Weather {
                 print(json)
                 
                 
-                completed()
+                completed(nil)
             }
         }
         

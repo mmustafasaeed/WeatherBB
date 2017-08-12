@@ -109,7 +109,7 @@ class HomeVC: UIViewController, UICollectionViewDelegateFlowLayout, UIGestureRec
                 let weatherObj = Weather()
                 weatherObj._latitude = obj.lat
                 weatherObj._longitude = obj.lon
-                weatherObj.downloadWeatherDetails {
+                weatherObj.downloadWeatherDetails {_ in 
                     
                     //self.downloadForecastData {
                     //self.updateMainUI()

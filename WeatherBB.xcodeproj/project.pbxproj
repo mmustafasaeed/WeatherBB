@@ -135,7 +135,6 @@
 		C409511B1F323F43003C1BB5 /* WeatherBB */ = {
 			isa = PBXGroup;
 			children = (
-				C40951E21F3EFFE8003C1BB5 /* Utilities */,
 				C409514D1F324351003C1BB5 /* Managers And Constants */,
 				C409514C1F324334003C1BB5 /* Models */,
 				C409514B1F32431F003C1BB5 /* Controllers */,
@@ -204,6 +203,7 @@
 		C409514D1F324351003C1BB5 /* Managers And Constants */ = {
 			isa = PBXGroup;
 			children = (
+				C40951E21F3EFFE8003C1BB5 /* Utilities */,
 				C40951921F335E44003C1BB5 /* Constants.swift */,
 				C40951B41F34A55A003C1BB5 /* NSNumberFormatter+WeatherBB.swift */,
 				C40951B61F34A743003C1BB5 /* UIView+Frame.swift */,

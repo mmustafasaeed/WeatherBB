@@ -62,8 +62,8 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func getData(){
-        currentWeather.downloadWeatherDetails {
-            self.downloadForecastData {
+        currentWeather.downloadWeatherDetails {_ in
+            self.downloadForecastData {_ in
                 self.updateMainUI()
             }
         }
@@ -74,8 +74,8 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
             currentLocation = locationManager.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            currentWeather.downloadWeatherDetails {
-                self.downloadForecastData {
+            currentWeather.downloadWeatherDetails {_ in 
+                self.downloadForecastData {_ in
                     self.updateMainUI()
                 }
             }
@@ -85,7 +85,7 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func downloadForecastData(completed: @escaping DownloadComplete) {
+    func downloadForecastData(completed: @escaping DownloadWeatherComplete) {
         //Downloading forecast weather data for TableView
         
         let url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(latitude)&lon=\(longitude)&cnt=10&mode=json&appid=c6e381d8c7ff98f0fee43775817cf6ad"
@@ -98,7 +98,7 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
             //if you're on a background queue and you want to make changes to the UI call this method.
             DispatchQueue.main.async {
                 guard let json = json else {
-                    completed()
+                    completed(error)
                     return
                 }
                 
@@ -117,7 +117,7 @@ class testDataViewController: UIViewController, UITableViewDelegate, UITableView
                         self.tableView.reloadData()
                     }
                 }
-                completed()
+                completed(nil)
 
             }
         }

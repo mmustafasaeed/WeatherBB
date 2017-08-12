@@ -12,6 +12,7 @@ import MapKit
 class HomeVC: UIViewController, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var deletemessageLabel: UILabel!
     
     fileprivate var items = [String]()
     let collectionViewLayout = CoinLayout()
@@ -37,6 +38,7 @@ class HomeVC: UIViewController, UICollectionViewDelegateFlowLayout, UIGestureRec
         collectionView.collectionViewLayout = collectionViewLayout
         collectionViewLayout.offsetX = -(33 / 2)
         
+        deletemessageLabel.isHidden = true
         
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(HomeVC.handleLongPress(gestureReconizer:)))
         lpgr.minimumPressDuration = 0.5
@@ -52,9 +54,11 @@ class HomeVC: UIViewController, UICollectionViewDelegateFlowLayout, UIGestureRec
         if isEditEnabled == false {
             editButton.title = "Done"
             isEditEnabled = true
+            deletemessageLabel.isHidden = false
         } else {
             isEditEnabled = false
             editButton.title = "Edit"
+            deletemessageLabel.isHidden = true
         }
         
     }
@@ -183,12 +187,10 @@ extension  HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 var i = 0
                 for obj in city {
                    
-                    i += 1
-                    
                     if i == indexPath.row {
                      context.delete(obj)
                     }
-                    
+                     i += 1
                 }
                 
                 
@@ -224,12 +226,28 @@ extension  HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let widthOfCollectionView = collectionView.layer.frame.size.width
         let heightOfCollectionView = collectionView.layer.frame.size.height
-        let widthOfCell = widthOfCollectionView * 0.65
-        let heightOfCell = heightOfCollectionView * 0.75
+        var widthOfCell : CGFloat = 0.0
+        var heightOfCell : CGFloat = 0.0
+        
+        if UIDevice.current.orientation.isPortrait {
+            
+            widthOfCell = widthOfCollectionView * 0.65
+            heightOfCell = heightOfCollectionView * 0.75
+        
+        } else if UIDevice.current.orientation.isLandscape {
+            widthOfCell = widthOfCollectionView * 0.35
+            heightOfCell = heightOfCollectionView * 0.65
+        }
+        
         
         cellWidth = widthOfCell
         
         return CGSize(width: widthOfCell, height:heightOfCell)
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        //print(UIDevice.current.orientation.isLandscape)
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 
